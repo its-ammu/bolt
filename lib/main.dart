@@ -1,7 +1,14 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-
 import 'card.dart';
-
+final List<String> imgList = [
+  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
+  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
+  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
+  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
+  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
+  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+];
 void main()
 {
 
@@ -21,40 +28,6 @@ void main()
     );
 
 }
-
-// class MyApp extends StatefulWidget {
-//   const MyApp({Key? key}) : super(key: key);
-//
-//   @override
-//   State<MyApp> createState() => _MyAppState();
-// }
-//
-// class _MyAppState extends State<MyApp> {
-//   String value ="vasan";
-//   void demo()
-//   {
-//     setState(() {
-//     value = "keerthi";
-//     });
-//   }
-//   @override
-//   Widget build(BuildContext context) {
-//       return MaterialApp(
-//         home: SafeArea(
-//           child: Column(
-//             children: <Widget>[
-//               Text("$value"),
-//               FloatingActionButton(
-//                   child:Icon(Icons.add),onPressed: demo)
-//             ],
-//
-//           ),
-//
-//
-//         )
-//       );
-//   }
-// }
 
 class Navbar extends StatelessWidget {
   const Navbar({Key? key}) : super(key: key);
@@ -89,18 +62,9 @@ class Navbar extends StatelessWidget {
           ],
         ),
           elevation: 0.0,
-         // backgroundColor: Colors.deepPurpleAccent
       ),
-      body: Column(
-        children: const <Widget>[
+      body:NoonLoopingDemo()
 
-          Spacer(),
-          ElevatedCardExample(),
-          FilledCardExample(),
-          OutlinedCardExample(),
-          Spacer(),
-        ],
-      ),
 
 
     )
@@ -108,83 +72,86 @@ class Navbar extends StatelessWidget {
   }
 }
 
+class NoonLoopingDemo extends StatelessWidget {
+  const NoonLoopingDemo({super.key});
 
-
-/// An example of the elevated card type.
-///
-/// The default settings for [Card] will provide an elevated
-/// card matching the spec:
-///
-/// https://m3.material.io/components/cards/specs#a012d40d-7a5c-4b07-8740-491dec79d58b
-class ElevatedCardExample extends StatelessWidget {
-  const ElevatedCardExample({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Card(
-        child: SizedBox(
-          width: 120,
-          height: 150,
-          child: Center(child: Text('Elevated Card')),
-        ),
-      ),
-    );
-  }
-}
+    for (var pet in imgList) {
+      print(pet);
+    }
+    return
+      Container(
+        child:
+        Column(
+          children: [
+             Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(left:50,bottom:10,top:50),
 
-/// An example of the filled card type.
-///
-/// To make a [Card] match the filled type, the default elevation and color
-/// need to be changed to the values from the spec:
-///
-/// https://m3.material.io/components/cards/specs#0f55bf62-edf2-4619-b00d-b9ed462f2c5a
-class FilledCardExample extends StatelessWidget {
-  const FilledCardExample({super.key});
+                        child: Text(
+                          'Bolt',
+                          style: TextStyle(fontSize: 25,fontFamily: "Raleway",color: Colors.red), //<-- SEE HERE
+                        ),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(right:50,bottom:10,top:50),
+                        child:
+                        Image.asset(
+                          'images/thunder.png',
+                          scale: 5,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        elevation: 0,
-        color: Theme.of(context).colorScheme.surfaceVariant,
-        child: const SizedBox(
-          width: 120,
-          height: 150,
-          child: Center(child: Text('Filled Card')),
-        ),
-      ),
-    );
-  }
-}
 
-/// An example of the outlined card type.
-///
-/// To make a [Card] match the outlined type, the default elevation and shape
-/// need to be changed to the values from the spec:
-///
-/// https://m3.material.io/components/cards/specs#0f55bf62-edf2-4619-b00d-b9ed462f2c5a
-class OutlinedCardExample extends StatelessWidget {
-  const OutlinedCardExample({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: Theme.of(context).colorScheme.outline,
+        Container(
+          height:220,
+          child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (BuildContext context, int index) {
+          return Column(
+          children: [
+
+          SizedBox(
+          height: 10,
+          width: 30,
           ),
-          borderRadius: const BorderRadius.all(Radius.circular(12)),
+          Row(
+          children: [
+          SizedBox(
+          width: 30,
+          ),
+          Image.asset(
+          'images/thunder.png',
+          scale: 2,
+          ),
+
+          ],
+          ),
+
+          ],
+          );
+
+          },
+          ),
         ),
-        child: const SizedBox(
-          width: 120,
-          height: 150,
-          child: Center(child: Text('Outlined Card')),
+              ],
         ),
-      ),
-    );
+
+
+
+      );
   }
 }
+
 
