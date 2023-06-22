@@ -97,8 +97,52 @@ class _AmountEntryWidgetState extends State<AmountEntryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.white),
+    return Scaffold(
+        appBar: AppBar(
+          bottomOpacity: 0.0,
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          toolbarHeight: 100.0,
+          // double
+          automaticallyImplyLeading: false,
+          flexibleSpace: Container(
+            decoration: BoxDecoration(color: Colors.white),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'images/main_icon.png',
+                scale: 1,
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              const Text(
+                'Bolt',
+                style: TextStyle(
+                    fontSize: 35,
+                    fontFamily: "Raleway",
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.15,
+                    color: Colors.black),
+
+              ),
+            ],
+          ),
+        ),
+
+      body : Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.white,
+              Color(0xbaf9fc9c),
+            ],
+          )
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -169,8 +213,8 @@ class _AmountEntryWidgetState extends State<AmountEntryWidget> {
             children: [
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  onPrimary: Colors.black,
-                  primary: Color(0xffFBFF4A),
+                  foregroundColor: Colors.black,
+                  backgroundColor: Color(0xffFBFF4A),
                   // Set the background color
                   textStyle: TextStyle(
                     color: Colors.black,
@@ -184,6 +228,7 @@ class _AmountEntryWidgetState extends State<AmountEntryWidget> {
                       horizontal: 16.0, vertical: 10.0), // Set the padding
                 ),
                 onPressed: () {
+                  Navigator.of(context).pop();
                   // Handle button press
                 },
                 child: Text(
@@ -194,6 +239,7 @@ class _AmountEntryWidgetState extends State<AmountEntryWidget> {
           ),
         ],
       ),
+    )
     );
   }
 }

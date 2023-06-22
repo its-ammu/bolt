@@ -1,20 +1,25 @@
 import 'dart:developer';
 
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'card.dart';
-import 'package:intl/intl.dart';
+
+
 
 final List<String> imgList = [
-  'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-  'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-  'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-  'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-  'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
+  'https://em-content.zobj.net/thumbs/160/apple/33/shopping-bags_1f6cd.png',
+  'https://em-content.zobj.net/thumbs/160/apple/271/house_1f3e0.png',
+  'https://em-content.zobj.net/thumbs/160/apple/81/taco_1f32e.png',
+  'https://em-content.zobj.net/thumbs/160/apple/96/movie-camera_1f3a5.png',
+  'https://em-content.zobj.net/thumbs/160/apple/76/clockwise-rightwards-and-leftwards-open-circle-arrows_1f501.png',
+  'https://em-content.zobj.net/thumbs/160/apple/81/heavy-black-heart_2764.png'
 ];
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     MaterialApp(
       title: 'Flutter Demo',
@@ -65,11 +70,12 @@ class ContentDisplay extends StatelessWidget {
 }
 
 class NoonLoopingDemo extends StatelessWidget {
-  const NoonLoopingDemo({super.key});
+   const NoonLoopingDemo({super.key});
+
 
   @override
   Widget build(BuildContext context) {
-    const itemLength = 4;
+    const itemLength = 6;
     return Container(
       margin: EdgeInsets.only(top: 39),
       width: 340,
@@ -116,105 +122,228 @@ class NoonLoopingDemo extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 50, bottom: 10, top: 35),
-                  child: Text(
-                    'may 2023',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: "Karla",
-                      color: Colors.black,
-                      letterSpacing: 0.15,
-                      fontWeight: FontWeight.w500,
-                    ), //<-- SEE HERE
-                  ),
-                ),
-              ),
-              Container(
-                child: Padding(
-                  padding: EdgeInsets.only(right: 50, bottom: 10, top: 35),
-                  child: Image.asset(
-                    'images/add.png',
-                  ),
-                ),
-              ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20, top: 6, bottom: 14),
-                  child: Container(
-                    child: Image.asset(
-                      'images/Rectangle 5.png',
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
           Container(
-            height: 220,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: itemLength,
-              itemBuilder: (BuildContext context, int index) {
-                // if (index == itemLength - 1) // here will be the logic
-                {
-                  return Column(
-                    children: [
-                      SizedBox(
-                        height: 10,
-                        width: 30,
-                      ),
-                      Row(
-                        children: [
-                          // Icxon(Icons.arrow_back),
-                          SizedBox(
-                            width: 20,
+            height: 330,
+            child: ListView(
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 50, bottom: 10, top: 35),
+                            child: Text(
+                              'may 2023',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: "Karla",
+                                color: Colors.black,
+                                letterSpacing: 0.15,
+                                fontWeight: FontWeight.w500,
+                              ), //<-- SEE HERE
+                            ),
                           ),
-                          Container(
-                            width: 80,
-                            height: 110,
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(7),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 50, bottom: 10, top: 35),
+                            child: Image.asset(
+                              'images/add.png',
                             ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 20, top: 6, bottom: 14),
+                            child: Container(
+                              child: Image.asset(
+                                'images/Rectangle 5.png',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 120,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: imgList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          // if (index == itemLength - 1) // here will be the logic
+                          {
+                            return Column(
                               children: [
-                                Image.asset(
-                                  'images/thunder.png',
-                                  scale: 6,
+                                SizedBox(
+                                  height: 10,
+                                  width: 30,
                                 ),
-                                SizedBox(width: 8),
-                                Text(
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontFamily: "Raleway",
-                                      color: Colors.white,
-                                      letterSpacing: 0.15,
-                                      height: 1.5,
-                                      fontWeight: FontWeight.w700,
+                                Row(
+                                  children: [
+                                    // Icxon(Icons.arrow_back),
+                                    SizedBox(
+                                      width: 20,
                                     ),
-                                    "data")
+                                    Container(
+                                      width: 80,
+                                      height: 110,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(7),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 40,
+                                            child: Image.network(
+                                                imgList[index],
+                                            ),
+                                          ),
+
+                                          SizedBox(height: 8),
+                                          Text(
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: "Raleway",
+                                                color: Colors.white,
+                                                letterSpacing: 0.15,
+                                                height: 1.5,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                              "data")
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ],
-                            ),
-                          )
-                        ],
+                            );
+                          }
+                        },
                       ),
-                    ],
-                  );
-                }
-              },
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 50, bottom: 10, top: 35),
+                            child: Text(
+                              'june 2023',
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontFamily: "Karla",
+                                color: Colors.black,
+                                letterSpacing: 0.15,
+                                fontWeight: FontWeight.w500,
+                              ), //<-- SEE HERE
+                            ),
+                          ),
+                        ),
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 50, bottom: 10, top: 35),
+                            child: Image.asset(
+                              'images/add.png',
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 20, top: 6, bottom: 14),
+                            child: Container(
+                              child: Image.asset(
+                                'images/Rectangle 5.png',
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Container(
+                      height: 120,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: imgList.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          // if (index == itemLength - 1) // here will be the logic
+                          {
+                            return Column(
+                              children: [
+                                SizedBox(
+                                  height: 10,
+                                  width: 30,
+                                ),
+                                Row(
+                                  children: [
+                                    // Icxon(Icons.arrow_back),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                      width: 80,
+                                      height: 110,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black,
+                                        borderRadius: BorderRadius.circular(7),
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 40,
+                                            child: Image.network(
+                                              imgList[index],
+                                            ),
+                                          ),
+
+                                          SizedBox(height: 8),
+                                          Text(
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                                fontFamily: "Raleway",
+                                                color: Colors.white,
+                                                letterSpacing: 0.15,
+                                                height: 1.5,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                              "data")
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            );
+                          }
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ]
+
             ),
           ),
+
+
         ],
       ),
     );
@@ -233,8 +362,10 @@ class Dropdown extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<Dropdown> {
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
         padding: EdgeInsets.only(left: 10, top: 1, right: 10),
         height: 28,
@@ -278,7 +409,9 @@ class _MyHomePageState extends State<Dropdown> {
 }
 
 class Navbar extends StatelessWidget {
-  const Navbar({Key? key}) : super(key: key);
+   Navbar({Key? key}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -318,91 +451,133 @@ class Navbar extends StatelessWidget {
         ),
 
 
-        body: AmountEntryWidget());
-    // body: Container(
-    //   decoration: BoxDecoration(color: Colors.white),
-    //   child: Column(
-    //     children: [
-    //       Stack(clipBehavior: Clip.none, children: [
-    //         Container(
-    //           constraints: new BoxConstraints(
-    //             minHeight: 113,
-    //             maxHeight: 130,
-    //           ),
-    //           margin: EdgeInsets.only(top: 50.0, left: 47, right: 47),
-    //           padding: EdgeInsets.all(20),
-    //           decoration: new BoxDecoration(
-    //             color: Colors.black,
-    //             borderRadius: BorderRadius.circular(19),
-    //           ),
-    //           child: Row(
-    //             children: [
-    //               Expanded(
-    //                   child: Column(children: [
-    //                 Text(
-    //                   'Current Spends',
-    //                   style: TextStyle(
-    //                     color: Colors.white,
-    //                     fontFamily: 'Raleway',
-    //                     fontWeight: FontWeight.w700,
-    //                     fontSize: 15.0,
-    //                     height: 2.5,
-    //                   ),
-    //                 ),
-    //                 Text(
-    //                   '₹' + '1000.00',
-    //                   style: TextStyle(
-    //                     color: Color(0xffFBFF4A),
-    //                     fontFamily: 'Karla',
-    //                     fontWeight: FontWeight.w700,
-    //                     fontSize: 25.0,
-    //                     height: 1.5,
-    //                   ),
-    //                 )
-    //               ])),
-    //               Expanded(
-    //                   child:
-    //                       // Second column content
-    //                       Column(children: [
-    //                 // Dropdown(),
-    //               ])),
-    //             ],
-    //           ),
-    //         ),
-    //         Positioned(
-    //             bottom: 92,
-    //             right: 60,
-    //             child: Padding(
-    //               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-    //               child: Row(
-    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                 children: [
-    //                   Dropdown(["week", "month"], "week"),
-    //                 ],
-    //               ),
-    //             )),
-    //         Positioned(
-    //             bottom: -18,
-    //             right: 55,
-    //             child: Padding(
-    //               padding: const EdgeInsets.symmetric(horizontal: 8.0),
-    //               child: Row(
-    //                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //                 children: [
-    //                   const SizedBox(
-    //                     width: 0,
-    //                   ),
-    //                   Image.asset(
-    //                     'images/man_with_board.png',
-    //                     scale: 0.9,
-    //                   ),
-    //                 ],
-    //               ),
-    //             ))
-    //       ]),
-    //       NoonLoopingDemo(),
-    //     ],
-    //   ),
-    // ));
+        // body: AmountEntryWidget());
+    body: Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Colors.white,
+              Colors.white,
+              Color(0xbaf9fc9c),
+            ],
+          )
+      ),
+      child: Column(
+        children: [
+          Stack(clipBehavior: Clip.none, children: [
+            Container(
+              constraints: new BoxConstraints(
+                minHeight: 113,
+                maxHeight: 130,
+              ),
+              margin: EdgeInsets.only(top: 50.0, left: 47, right: 47),
+              padding: EdgeInsets.all(20),
+              decoration: new BoxDecoration(
+                color: Colors.black,
+                borderRadius: BorderRadius.circular(19),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: Column(children: [
+                    Text(
+                      'Current Spends',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Raleway',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15.0,
+                        height: 2.5,
+                      ),
+                    ),
+                    Text(
+                      '₹' + '1000.00',
+                      style: TextStyle(
+                        color: Color(0xffFBFF4A),
+                        fontFamily: 'Karla',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 25.0,
+                        height: 1.5,
+                      ),
+                    )
+                  ])),
+                  Expanded(
+                      child:
+                          // Second column content
+                          Column(children: [
+                    // Dropdown(),
+                  ])),
+                ],
+              ),
+            ),
+            Positioned(
+                bottom: 92,
+                right: 60,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Dropdown(["week", "month"], "week"),
+                    ],
+                  ),
+                )),
+            Positioned(
+                bottom: -18,
+                right: 55,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SizedBox(
+                        width: 0,
+                      ),
+                      Image.asset(
+                        'images/man_with_board.png',
+                        scale: 0.9,
+                      ),
+                    ],
+                  ),
+                ))
+          ]),
+          NoonLoopingDemo(),
+          Expanded(
+            child: GestureDetector(
+              onVerticalDragUpdate: (dragUpdateDetails) {
+                Navigator.push(context, (new MaterialPageRoute(builder: (BuildContext context) => new AmountEntryWidget())));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.transparent
+
+                ),
+                padding: EdgeInsets.only(top:50),
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Icon(Icons.keyboard_arrow_up, color: Colors.black),
+                    Text(
+                        "Swipe up to add expense",
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: "Raleway",
+                        color: Colors.black,
+                        letterSpacing: 0.15,
+                        height: 1.5,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+        ],
+      ),
+    ));
   }
 }

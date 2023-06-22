@@ -38,6 +38,8 @@ dependencies:
   carousel_slider: ^4.2.1
   intl: ^0.18.1
   pattern_formatter: ^3.0.0
+  firebase_core: ^2.14.0
+  firebase_database: ^10.2.3
 
 dev_dependencies:
   flutter_test:
