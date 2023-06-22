@@ -311,12 +311,13 @@ class Navbar extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.15,
                     color: Colors.black),
+
               ),
             ],
           ),
         ),
 
-        // need Route it
+
         body: AmountEntryWidget());
     // body: Container(
     //   decoration: BoxDecoration(color: Colors.white),
