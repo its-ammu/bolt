@@ -36,6 +36,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
+  intl: ^0.18.1
+  pattern_formatter: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +82,12 @@ flutter:
        fonts:
         - asset: fonts/Raleway/static/Raleway-Bold.ttf
         - asset: fonts/Raleway/static/Raleway-Medium.ttf
+
+     - family: Karla
+       fonts:
+         - asset: fonts/Karla/static/Karla-Bold.ttf
+         - asset: fonts/Karla/static/Karla-Medium.ttf
+
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
