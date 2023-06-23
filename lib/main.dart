@@ -5,6 +5,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'card.dart';
+import  'firebase_services.dart';
 
 
 
@@ -18,6 +19,7 @@ final List<String> imgList = [
 ];
 
 void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(
@@ -32,7 +34,10 @@ void main() async{
       ),
       home: Navbar(),
     ),
+
   );
+
+
 }
 
 class TextImageCard extends StatelessWidget {
@@ -71,6 +76,7 @@ class ContentDisplay extends StatelessWidget {
 
 class NoonLoopingDemo extends StatelessWidget {
    const NoonLoopingDemo({super.key});
+
 
 
   @override
@@ -408,8 +414,10 @@ class _MyHomePageState extends State<Dropdown> {
   }
 }
 
+
 class Navbar extends StatelessWidget {
    Navbar({Key? key}) : super(key: key);
+
 
 
 
