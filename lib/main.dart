@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'firebase_options.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'card.dart';
 import  'firebase_services.dart';
@@ -81,7 +82,6 @@ class NoonLoopingDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const itemLength = 6;
     return Container(
       margin: EdgeInsets.only(top: 39),
       width: 340,
