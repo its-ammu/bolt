@@ -5,8 +5,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'firebase_options.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
+
 import 'card.dart';
 import  'firebase_services.dart';
+
 
 
 
@@ -23,6 +25,7 @@ void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
   runApp(
     MaterialApp(
       title: 'Flutter Demo',
@@ -77,6 +80,7 @@ class ContentDisplay extends StatelessWidget {
 
 class NoonLoopingDemo extends StatelessWidget {
    const NoonLoopingDemo({super.key});
+
 
 
 
@@ -423,6 +427,7 @@ class Navbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
         appBar: AppBar(
           bottomOpacity: 0.0,
@@ -487,6 +492,7 @@ class Navbar extends StatelessWidget {
                 borderRadius: BorderRadius.circular(19),
               ),
               child: Row(
+
                 children: [
                   Expanded(
                       child: Column(children: [
@@ -589,3 +595,8 @@ class Navbar extends StatelessWidget {
     ));
   }
 }
+
+
+
+
+

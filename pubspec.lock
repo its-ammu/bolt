@@ -17,6 +17,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.10.0"
+  bonsoir:
+    dependency: "direct main"
+    description:
+      name: bonsoir
+      sha256: d804e89b71da2c32c48a8c0a0c100e746521869429721ffbd61330ee95933836
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
+  bonsoir_android:
+    dependency: transitive
+    description:
+      name: bonsoir_android
+      sha256: "2c089240abba5e1f466f2b6e690b6400fbfe9a446c5233cce4b79de279982909"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0+1"
+  bonsoir_darwin:
+    dependency: transitive
+    description:
+      name: bonsoir_darwin
+      sha256: e6dfa3062cb9dc40cb3b640445a9b1c727677c9e27dc54104b2743e58bd5f80c
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0+3"
+  bonsoir_platform_interface:
+    dependency: transitive
+    description:
+      name: bonsoir_platform_interface
+      sha256: "2f30c5f144309f690f11890e7db52ddc8a4f8a576a1ec9e3761bb430c2b986cd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0+1"
   boolean_selector:
     dependency: transitive
     description:
@@ -130,10 +162,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_lints
-      sha256: aeb0b80a8b3709709c9cc496cdc027c5b3216796bc0af0ce1007eaf24464fd4c
+      sha256: "2118df84ef0c3ca93f96123a616ae8540879991b8b57af2f81b76a7ada49b2a4"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.1"
+    version: "2.0.2"
   flutter_test:
     dependency: "direct dev"
     description: flutter

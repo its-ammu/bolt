@@ -1,7 +1,15 @@
 class MyClass {
   String _amount="",_payment="",_category="";
+  String _data="";
   String get amount {
     return _amount;
+  }
+  String get data {
+    return _data;
+  }
+
+  set data(String value) {
+    _data = value;
   }
 
   set amount(String value) {

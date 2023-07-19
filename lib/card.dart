@@ -14,6 +14,7 @@ late String category;
 late String payment;
 MyClass myObject = MyClass();
 
+String ans="ips near";
 void setAmount(amount) {
   amount = amount;
 }
@@ -123,6 +124,7 @@ class AmountEntryWidget extends StatefulWidget {
 }
 
 class _AmountEntryWidgetState extends State<AmountEntryWidget> {
+
   late TextEditingController _amountController;
 
   @override
@@ -139,6 +141,7 @@ class _AmountEntryWidgetState extends State<AmountEntryWidget> {
 
   @override
   Widget build(BuildContext context) {
+    print("amount widgey");
     var date = (new DateFormat.d().format(
         DateTime.now()
     ));
@@ -293,25 +296,77 @@ class _AmountEntryWidgetState extends State<AmountEntryWidget> {
                           horizontal: 16.0, vertical: 10.0), // Set the padding
                     ),
                     onPressed: () {
-                      myObject.amount = _amountController.text;
-                      Fluttertoast.showToast(
-                        msg: 'saved sucessfully',
-                        toastLength: Toast.values[0],
-                        gravity: ToastGravity.CENTER,
-                        backgroundColor: Colors.yellow,
-                        textColor: Colors.white,
-
-                      );
-
                       setData(
                           myObject.amount, myObject.category, myObject.payment);
                     },
                     child: Text(
-                      'save',
+                      'broadcast',
                     ),
-                  )
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Color(0xffFBFF4A),
+                      // Set the background color
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Raleway',
+                        fontSize: 18.0, // Set the font size
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 10.0), // Set the padding
+                    ),
+                    onPressed: () {
+
+                      Future<String> value = getData();
+                      (value.then((value) => (ans=value)));
+
+
+                    },
+                    child: Text(
+                      'discover',
+                    ),
+                  ),
+          
+
+
                 ],
               ),
+              Row(
+
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.white,
+                      // Set the background color
+                      textStyle: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Raleway',
+                        fontSize: 18.0, // Set the font size
+                      ),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(40)),
+
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 10.0), // Set the padding
+                    ),
+                    onPressed: () {
+                      print(ans);
+
+
+                    },
+                    child: Text(
+                      'ip:'+ans,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ));

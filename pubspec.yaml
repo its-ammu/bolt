@@ -41,6 +41,7 @@ dependencies:
   firebase_core: ^2.14.0
   firebase_database: ^10.2.3
   fluttertoast: ^8.2.2
+  bonsoir: ^2.0.0
 
 dev_dependencies:
   flutter_test:
